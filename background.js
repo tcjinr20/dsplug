@@ -30,14 +30,14 @@ function toggleBookmark() {
 }
 
 browser.browserAction.onClicked.addListener(toggleBookmark);
-
-/*
- * Switches currentTab and currentBookmark to reflect the currently active tab
- */
+browser.tabs.executeScript(null, {
+		file: "content_scripts/fy.js"
+	});
 function updateActiveTab(tabs) {
   function updateTab(tabs) {
     if (tabs[0]) {
       currentTab = tabs[0];
+
         updateIcon();
     }
   }

@@ -16,6 +16,7 @@ function changeTohtml(){
 	$("#contenword").html($("#content").val())
 }
 function clickDOM(e){
+	
 	var chosenBeast =e.target.getAttribute("value");
 	browser.tabs.sendMessage(currentTab.id, {type:"pack",data: chosenBeast});
 }
@@ -25,8 +26,7 @@ function notify(tip){
     "type": "basic",
     "iconUrl": browser.extension.getURL("icons/beasts-48.png"),
     "title": "提示",
-    "message": tip,
-	"periodInMinutes":0.01
+    "message": tip
   });
 }
 
@@ -58,7 +58,6 @@ $(document).ready(function(){
 })
 
 function initialize() {
-	
   var gettingAllStorageItems = browser.storage.local.get(null);
   gettingAllStorageItems.then((results) => {
 	 
